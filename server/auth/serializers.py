@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from rest_framework.permissions import AllowAny
 
 
 from rest_framework import serializers
@@ -29,6 +30,8 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class LoginSerializer(serializers.Serializer):
+    permission_classes = AllowAny
+
     username = serializers.CharField()
     password = serializers.CharField()
 
