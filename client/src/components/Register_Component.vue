@@ -1,12 +1,11 @@
 <template>
 <div>
-    <h1>hello</h1>
 <input type="text" v-model="username_input" placeholder="Username">
 <input v-model="email_input" placeholder="Email">
 <input v-model="password_input" placeholder="Password">
 <button type="button" @click="Register_User">Register</button>
 <br>
-{{ answer.token }}
+{{ answer }}
 </div>
 </template>
 <script>
@@ -14,7 +13,7 @@
 import axios from "axios";
 
 export default {
-  name: "Register",
+  name: "Register_Component",
   data() {
     return {
     username_input: null,

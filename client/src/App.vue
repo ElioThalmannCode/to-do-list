@@ -1,21 +1,10 @@
 <template>
-  <div id="app">
-    <Register/>
+  <div>
+      <router-link to="/register">Register</router-link> |
+      <router-link to="/login">Login</router-link>
+    <router-view/>
   </div>
 </template>
 
-<script>
-// import Login from './components/Login.vue'
-import Register from './components/Register.vue'
-export default {
-  name: 'App',
-  components: {
-//    Login,
-    Register
-  }
-}
-</script>
-
 <style>
-
 </style>
