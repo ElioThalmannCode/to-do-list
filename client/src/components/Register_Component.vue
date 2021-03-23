@@ -33,10 +33,9 @@ export default {
         .post("http://localhost:8000/auth/register", article)
         .then(response => {
             this.answer = response.data;
-            console.log(response.data);
+            localStorage.setItem("token", response.data.token);
         })
         .catch(error =>{
-            this.errors.push(error);
             console.log(error);
         })
     },

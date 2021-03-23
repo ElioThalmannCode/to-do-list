@@ -4,8 +4,6 @@
     <Register_Component/>
   </div>
 </template>
-
-
 <script>
 
 import Register_Component from '@/components/Register_Component.vue'
@@ -17,4 +15,3 @@ export default {
   }
 }
 </script>
-y
