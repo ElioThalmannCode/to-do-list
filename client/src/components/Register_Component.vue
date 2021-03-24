@@ -1,25 +1,25 @@
 <template>
-<div>
-<input type="text" v-model="username_input" placeholder="Username">
-<input v-model="email_input" placeholder="Email">
-<input v-model="password_input" placeholder="Password">
-<button type="button" @click="Register_User">Register</button>
-<br>
-{{ answer }}
-</div>
+  <div>
+    <input type="text" v-model="username_input" placeholder="Username" />
+    <input v-model="email_input" placeholder="Email" />
+    <input v-model="password_input" placeholder="Password" />
+    <button type="button" @click="Register_User">Register</button>
+    <button type="button" @click="get_todos">test</button>
+    <br />
+    {{ answer }}
+  </div>
 </template>
 <script>
-
 import axios from "axios";
 
 export default {
   name: "Register_Component",
   data() {
     return {
-    username_input: null,
-    email_input: null,
-    password_input: null,
-    answer: null,
+      username_input: null,
+      email_input: null,
+      password_input: null,
+      answer: null,
     };
   },
   methods: {
@@ -31,13 +31,13 @@ export default {
       };
       axios
         .post("http://localhost:8000/auth/register", article)
-        .then(response => {
-            this.answer = response.data;
-            localStorage.setItem("token", response.data.token);
+        .then((response) => {
+          this.answer = response.data;
+          localStorage.setItem("token", response.data.token);
         })
-        .catch(error =>{
-            console.log(error);
-        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
