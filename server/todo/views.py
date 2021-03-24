@@ -9,25 +9,20 @@ from .serializers import TodoSerializer
 
 class TodoAPIView(viewsets.ViewSet):
     serializer_class = TodoSerializer
+    permission_classes = [
+            permissions.AllowAny,
+        ]
 
     def list(self, request):
-        permission_classes = [
-            permissions.IsAuthenticated,
-        ]
         queryset = Todo.objects.all()
         serializer = TodoSerializer(queryset, many=True)
         return Response(serializer.data)
 
     def create(self, request):
-        permission_classes = [
-            permissions.IsAuthenticated,
-        ]
         serializer = TodoSerializer(data=request.data, context={'request': request})
         serializer.is_valid(raise_exception=True)
-        post = serializer.save()
-        return Response({
-            "todo": TodoSerializer(post)
-        })
+        serializer.save()
+        return Response(serializer.data)
 
 
     

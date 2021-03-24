@@ -11,9 +11,9 @@ export default {
   data() {
     return {};
   },
-  created() {
+  mounted() {
     axios
-      .get(`http://localhost:8000/todo`, { headers: { "content-type": "application/json", token: ("token " + localStorage.getItem('token')) } })
+      .get(`http://localhost:8000/todo`)
       .then((response) => {
         console.log(response.data)
       })

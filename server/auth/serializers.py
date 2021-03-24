@@ -31,7 +31,6 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 class LoginSerializer(serializers.Serializer):
     permission_classes = AllowAny
-
     username = serializers.CharField()
     password = serializers.CharField()
 
