@@ -14,7 +14,7 @@
 export default {
   name: "Single_Todo_Component",
   props: {
-  data: Array,
+  data: Object,
 },
 }
 </script>
