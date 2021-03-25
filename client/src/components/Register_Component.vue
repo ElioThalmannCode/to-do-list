@@ -4,7 +4,6 @@
     <input v-model="email_input" placeholder="Email" />
     <input v-model="password_input" placeholder="Password" />
     <button type="button" @click="Register_User">Register</button>
-    <button type="button" @click="get_todos">test</button>
     <br />
     {{ answer }}
   </div>

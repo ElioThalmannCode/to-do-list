@@ -1,4 +1,3 @@
-
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 
@@ -31,6 +30,7 @@ class RegisterAPIView(generics.GenericAPIView):
 
 
 class LoginAPIView(generics.GenericAPIView):
+    permission_classes = (permissions.AllowAny,)
     serializer_class = LoginSerializer
 
     def post(self, request, *args, **kwargs):

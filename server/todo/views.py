@@ -4,13 +4,12 @@ from rest_framework.response import Response
 from .models import Todo
 
 from knox.models import AuthToken
-
 from .serializers import TodoSerializer
 
 class TodoAPIView(viewsets.ViewSet):
     serializer_class = TodoSerializer
     permission_classes = [
-            permissions.AllowAny,
+            permissions.IsAuthenticated,
         ]
 
     def list(self, request):
@@ -19,7 +18,7 @@ class TodoAPIView(viewsets.ViewSet):
         return Response(serializer.data)
 
     def create(self, request):
-        serializer = TodoSerializer(data=request.data, context={'request': request})
+        serializer = TodoSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
