@@ -1,10 +1,9 @@
 <template>
   <div>
-    <input v-model="username_input" placeholder="Username" />
-    <input v-model="password_input" placeholder="Password" />
-    <button type="button" @click="Login_User">Login</button>
-    <br>
-    {{ answer }}
+    <v-text-field v-model="username_input" label="Name"></v-text-field>
+    <v-text-field type="password" @keyup.enter="Login_User" v-model="password_input" label="Password"></v-text-field>
+
+    <v-btn @click="Login_User">submit</v-btn>
   </div>
 </template>
 
@@ -36,9 +35,12 @@ export default {
             this.answer = response.data;
             console.log(response.data.token)
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem("isAuthenticated", JSON.stringify("yes"));
+            this.$router.push('/');
         })
         .catch(error =>{
             console.log(error);
+            alert("Wrong Login Data")
         })
     },
   },

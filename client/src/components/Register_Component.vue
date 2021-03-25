@@ -1,11 +1,15 @@
 <template>
   <div>
-    <input type="text" v-model="username_input" placeholder="Username" />
-    <input v-model="email_input" placeholder="Email" />
-    <input v-model="password_input" placeholder="Password" />
-    <button type="button" @click="Register_User">Register</button>
-    <br />
-    {{ answer }}
+    <v-text-field v-model="username_input" label="Name"></v-text-field>
+    <v-text-field v-model="email_input" label="E-mail"></v-text-field>
+    <v-text-field
+      type="password"
+      @keyup.enter="Register_User"
+      v-model="password_input"
+      label="Password"
+    ></v-text-field>
+
+    <v-btn @click="Register_User">submit</v-btn>
   </div>
 </template>
 <script>
@@ -18,7 +22,6 @@ export default {
       username_input: null,
       email_input: null,
       password_input: null,
-      answer: null,
     };
   },
   methods: {
@@ -33,9 +36,12 @@ export default {
         .then((response) => {
           this.answer = response.data;
           localStorage.setItem("token", response.data.token);
+          localStorage.setItem("isAuthenticated", true);
+          this.$router.push('/');
         })
         .catch((error) => {
           console.log(error);
+          alert("Please enter valid data!");
         });
     },
   },

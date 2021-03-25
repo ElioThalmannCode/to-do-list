@@ -1,10 +1,12 @@
 <template>
   <div>
-    <input v-model="title" placeholder="title" />
-    <input v-model="description" placeholder="description" />
-    <input v-model="importance" placeholder="importance" />
-    <input v-model="status" placeholder="status" />
-    <button type="button" @click="add_todo">new todo</button>
+    <h1>Add Todo</h1>
+    <v-text-field v-model="title" label="Name"></v-text-field>
+    <v-text-field v-model="description" label="Description"></v-text-field>
+    <v-text-field v-model="importance" label="Importance"></v-text-field>
+    <v-text-field v-model="status" label="Status"></v-text-field>
+
+    <v-btn @click="add_todo">Add Todo</v-btn>
   </div>
 </template>
 <script>
