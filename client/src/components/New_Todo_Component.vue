@@ -33,9 +33,11 @@ export default {
         .post("http://localhost:8000/todo/", article, {headers: {Authorization: ("Token " + (localStorage.getItem("token"))),}})
         .then((response) => {
           console.log(response)
+          this.$router.push('/');
         })
         .catch((error) => {
           console.log(error);
+          this.$router.push('/login');
         });
     },
   },

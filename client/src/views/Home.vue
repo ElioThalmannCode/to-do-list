@@ -24,11 +24,11 @@ export default {
           axios
         .get("http://localhost:8000/todo/", {headers: {Authorization: ("Token " + (localStorage.getItem("token"))),}})
         .then((response) => {
-          console.log(response)
           this.todos = (response.data);
         })
         .catch((error) => {
           console.log(error);
+          this.$router.push('/login');
         });
   },
 };
