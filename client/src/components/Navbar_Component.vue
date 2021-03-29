@@ -1,9 +1,8 @@
 <template>
-  <v-app>
+  <div>
     <v-app-bar
       absolute
       elevate-on-scroll
-      scroll-target="#scrolling-techniques-7"
     >
       <v-app-bar-nav-icon
         class="d-flex d-sm-none"
@@ -22,7 +21,7 @@
       </v-btn-toggle>
       <v-spacer />
       <v-switch
-        class="d-none d-sm-flex"
+        class="d-none d-sm-flex slider"
         v-model="darkmode"
         @click="toggle_dark_mode"
         label="Darkmode"
@@ -52,7 +51,6 @@
         </v-list-item-group>
         <v-spacer />
         <v-switch
-        class="mamamam"
         mt-5
         v-model="darkmode"
         @click="toggle_dark_mode"
@@ -61,19 +59,7 @@
         </v-switch>
       </v-list>
     </v-navigation-drawer>
-
-    <v-content style="margin-top: 70px">
-      <v-container>
-        <router-view />
-      </v-container>
-    </v-content>
-
-    <v-footer padless>
-      <v-col class="text-center" cols="12">
-        {{ new Date().getFullYear() }} — <strong>Elio Thalmann</strong>
-      </v-col>
-    </v-footer>
-  </v-app>
+    </div>
 </template>
 <script>
 export default {
@@ -91,3 +77,8 @@ name: "App",
     }}
 };
 </script>
+<style scoped>
+.slider {
+margin-top: 20px !important;;
+}
+</style>

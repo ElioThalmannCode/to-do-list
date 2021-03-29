@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-text-field v-model="username_input" label="Name"></v-text-field>
-    <v-text-field type="password" @keyup.enter="Login_User" v-model="password_input" label="Password"></v-text-field>
+    <v-text-field color="deep-purple accent-3" v-model="username_input" label="Username"></v-text-field>
+    <v-text-field color="deep-purple accent-3" type="password" @keyup.enter="Login_User" v-model="password_input" label="Password"></v-text-field>
 
-    <v-btn @click="Login_User">submit</v-btn>
+    <v-btn color="deep-purple accent-3" class="white--text" @click="Login_User">submit</v-btn>
   </div>
 </template>
 
@@ -35,7 +35,6 @@ export default {
             this.answer = response.data;
             console.log(response.data.token)
             localStorage.setItem('token', response.data.token);
-            localStorage.setItem("isAuthenticated", JSON.stringify("yes"));
             this.$router.push('/');
         })
         .catch(error =>{

@@ -1,12 +1,10 @@
 <template>
   <div>
     <h1>Add Todo</h1>
-    <v-text-field v-model="title" label="Name"></v-text-field>
-    <v-text-field v-model="description" label="Description"></v-text-field>
-    <v-text-field v-model="importance" label="Importance"></v-text-field>
-    <v-text-field v-model="status" label="Status"></v-text-field>
+    <v-text-field color="deep-purple accent-3" v-model="title" label="Title"></v-text-field>
+    <v-text-field color="deep-purple accent-3" v-model="description" label="Description"></v-text-field>
 
-    <v-btn @click="add_todo">Add Todo</v-btn>
+    <v-btn color="white--text deep-purple accent-3" @click="add_todo">Add Todo</v-btn>
   </div>
 </template>
 <script>
@@ -17,8 +15,8 @@ export default {
     return {
       title: null,
       description: null,
-      importance: null,
-      status: null,
+      importance: 1,
+      status: 1,
     };
 },  methods: {
     add_todo: function () {
@@ -37,7 +35,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          this.$router.push('/login');
+          alert("Wrong data or not logged in")
         });
     },
   },
