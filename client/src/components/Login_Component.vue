@@ -12,7 +12,6 @@
 
 <script>
 
-import axios from "axios";
 
 export default {
   name: "Login_Component",
@@ -29,17 +28,9 @@ export default {
         username: this.username_input,
         password: this.password_input,
       };
-      axios
-        .post("http://localhost:8000/auth/login", article)
-        .then(response => {
-            this.answer = response.data;
-            console.log(response.data.token)
-            localStorage.setItem('token', response.data.token);
-            this.$router.push('/');
-        })
-        .catch(error =>{
-            console.log(error);
-            alert("Wrong Login Data")
+    this.$store.dispatch('login', article)
+    .then(() => {
+          this.$router.push('/')
         })
     },
   },

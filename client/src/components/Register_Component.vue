@@ -14,7 +14,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 
 export default {
   name: "Register_Component",
@@ -32,17 +31,10 @@ export default {
         password: this.password_input,
         email: this.email_input,
       };
-      axios
-        .post("http://localhost:8000/auth/register", article)
-        .then((response) => {
-          this.answer = response.data;
-          localStorage.setItem("token", response.data.token);
-          this.$router.push("/");
+      this.$store.dispatch('register', article)
+      .then(() => {
+          this.$router.push('/')
         })
-        .catch((error) => {
-          console.log(error);
-          alert("Please enter valid data!");
-        });
     },
   },
 };

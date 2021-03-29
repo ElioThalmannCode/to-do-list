@@ -14,7 +14,6 @@ class TodoSerializer(serializers.ModelSerializer):
              status = self.validated_data['status']
           )
         return new_todo
-
     class Meta:
         model = Todo
         fields = ('title','description','importance','status')

@@ -10,14 +10,14 @@
       ></v-app-bar-nav-icon>
       <v-btn-toggle
         class="d-none d-sm-flex"
-        tile
         color="deep-purple accent-3"
         @click="drawer = !drawer"
       >
         <v-btn to="/"> Home </v-btn>
-        <v-btn to="/add_todo"> Add Todo </v-btn>
-        <v-btn to="/Login" value="Login"> Login </v-btn>
-        <v-btn to="/Register"> Register </v-btn>
+        <v-btn v-if="!isLoggedIn" to="/add_todo"> Add Todo </v-btn>
+        <v-btn v-if="isLoggedIn" to="/Login" value="Login"> Login </v-btn>
+        <v-btn v-if="isLoggedIn"  to="/Register"> Register </v-btn>
+        <v-btn v-if="!isLoggedIn"  @click="logout"> logout </v-btn>
       </v-btn-toggle>
       <v-spacer />
       <v-switch
@@ -36,16 +36,19 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/add_todo" @click="drawer = !drawer">
+          <v-list-item v-if="!isLoggedIn" to="/add_todo" @click="drawer = !drawer">
             <v-list-item-title>Add Todo</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/Login" @click="drawer = !drawer">
+          <v-list-item v-if="isLoggedIn" to="/Login" @click="drawer = !drawer">
             <v-list-item-title>Login</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/Register" @click="drawer = !drawer">
+          <v-list-item v-if="isLoggedIn" to="/Register" @click="drawer = !drawer">
             <v-list-item-title>Register</v-list-item-title>
+          </v-list-item>
+          <v-list-item v-if="!isLoggedIn" @click="logout">
+            <v-list-item-title>Logout</v-list-item-title>
           </v-list-item>
 
         </v-list-item-group>
@@ -70,7 +73,16 @@ name: "App",
       darkmode: true
     };
   },
-  methods: {
+    computed : {
+      isLoggedIn : function(){ return !this.$store.getters.isLoggedIn}
+    },
+    methods: {
+      logout: function () {
+        this.$store.dispatch('logout')
+        .then(() => {
+          this.$router.push('/login')
+        })
+    },
   toggle_dark_mode: function() { 
     this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
     this.darkmode = this.$vuetify.theme.dark

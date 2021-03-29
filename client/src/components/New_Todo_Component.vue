@@ -27,8 +27,9 @@ export default {
         status: this.status,
         creator: "x"
       };
+      axios.defaults.headers.common['Authorization'] = this.$store.getters.gettoken
       axios
-        .post("http://localhost:8000/todo/", article, {headers: {Authorization: ("Token " + (localStorage.getItem("token"))),}})
+        .post("http://localhost:8000/todo/", article)
         .then((response) => {
           console.log(response)
           this.$router.push('/');

@@ -34,16 +34,14 @@ export default {
     };
   },
   mounted() {
+    axios.defaults.headers.common['Authorization'] = this.$store.getters.gettoken
     axios
-      .get("http://localhost:8000/todo/", {
-        headers: { Authorization: "Token " + localStorage.getItem("token") },
-      })
+      .get("http://localhost:8000/todo/")
       .then((response) => {
         this.todos = response.data;
       })
       .catch((error) => {
         console.log(error);
-        this.$router.push("/login");
       });
   },
 };

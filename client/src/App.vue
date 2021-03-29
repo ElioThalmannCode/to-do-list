@@ -19,6 +19,7 @@ export default {
     Navbar_Component,
     Footer_Component,
   },
+
 };
 
 </script>
