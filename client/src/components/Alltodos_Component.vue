@@ -42,6 +42,9 @@ export default {
       })
       .catch((error) => {
         console.log(error);
+        if (error.response.status == 401) {
+          this.$store.dispatch('logout')
+        }
       });
   },
 };
