@@ -1,16 +1,16 @@
 <template>
   <div>
-    <v-text-field color="deep-purple accent-3" v-model="username_input" label="Username"></v-text-field>
-    <v-text-field color="deep-purple accent-3" v-model="email_input" label="E-mail"></v-text-field>
+    <v-text-field color="primary" v-model="username_input" label="Username"></v-text-field>
+    <v-text-field color="primary" v-model="email_input" label="E-mail"></v-text-field>
     <v-text-field
       type="password"
       @keyup.enter="Register_User"
       v-model="password_input"
       label="Password"
-      color="deep-purple accent-3"
+      color="primary"
     ></v-text-field>
 
-    <v-btn class="white--text" color="deep-purple accent-3" @click="Register_User">submit</v-btn>
+    <v-btn class="white--text" color="primary" @click="Register_User">submit</v-btn>
   </div>
 </template>
 <script>

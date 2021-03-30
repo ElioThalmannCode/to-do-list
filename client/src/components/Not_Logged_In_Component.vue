@@ -24,7 +24,7 @@
             <v-btn to="/register">Register</v-btn>
             </v-btn-toggle>
             <br>
-            <v-btn class="ma-2" color="#252525" dark><v-icon>$vuetify.icons.custom</v-icon>github</v-btn>
+            <v-btn href="https://github.com/ElioThalmannCode/to-do-liste" class="ma-2" color="#252525" dark><v-icon>$vuetify.icons.custom</v-icon>github</v-btn>
             </v-card>
           </v-row>
           <v-row>
@@ -38,5 +38,3 @@ name: "Not_Logged_In_Component",
   },  
 }
 </script>
-
-<v-icon>$vuetify.icons.custom</v-icon>
