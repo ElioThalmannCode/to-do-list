@@ -11,7 +11,7 @@
       <v-btn-toggle
         class="d-none d-sm-flex"
         color="deep-purple accent-3"
-        @click="drawer = !drawer"
+        @click="drawer = !drawer"wo
       >
         <v-btn to="/"> Home </v-btn>
         <v-btn v-if="!isLoggedIn" to="/add_todo"> Add Todo </v-btn>
