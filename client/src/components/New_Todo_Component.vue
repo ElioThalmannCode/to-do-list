@@ -1,10 +1,10 @@
 <template>
   <div>
     <h1>Add Todo</h1>
-    <v-text-field color="deep-purple accent-3" v-model="title" label="Title"></v-text-field>
-    <v-text-field color="deep-purple accent-3" v-model="description" label="Description"></v-text-field>
+    <v-text-field color="primary" v-model="title" label="Title"></v-text-field>
+    <v-text-field color="primary" v-model="description" label="Description"></v-text-field>
 
-    <v-btn color="white--text deep-purple accent-3" @click="add_todo">Add Todo</v-btn>
+    <v-btn color="white--text primary accent-3" @click="add_todo">Add Todo</v-btn>
   </div>
 </template>
 <script>

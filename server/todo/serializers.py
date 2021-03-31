@@ -3,17 +3,24 @@ from .models import Todo
 
 from django.contrib.auth.models import User
 
-class TodoSerializer(serializers.ModelSerializer):
 
-    def create(self, request, *args, **kwargs):
-        new_todo =  Todo.objects.create(
-             creator = User.objects.get(id=1),
-             title = self.validated_data['title'],
-             description = self.validated_data['description'],
-             importance = self.validated_data['importance'],
-             status = self.validated_data['status']
-          )
-        return new_todo
-    class Meta:
-        model = Todo
-        fields = ('title','description','importance','status')
+class TodoSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    title = serializers.CharField(required=True, max_length=50)
+    description = serializers.CharField(required=True,  max_length=500)
+    creator = serializers.RelatedField(source='User', read_only=True)
+    importance = serializers.IntegerField(max_value=3, min_value=1)
+    status = serializers.IntegerField(max_value=3, min_value=1)
+
+    def create(self, data):
+        return Todo.objects.create(
+            creator = self.context['request'].user,
+            title = data['title'],
+            description = data['description'],
+            importance = data['importance'],
+            status = data['status']
+        )
+    def safe(self, obj):
+        return Todo.objects.create(**obj)
+    def perform_create(self, serializer):
+        serializer.save()
